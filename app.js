@@ -21,7 +21,7 @@ function formData() {
   ['aroma','flavor','complexity','longevity','dab_performance','smoothness','effects','price_paid']
     .forEach(k => data[k] = Number(data[k] || 0));
 
-  data.overall = scoreOf(data);
+
   data.created_at = new Date().toISOString();
   data.id = crypto.randomUUID();
 
@@ -161,7 +161,7 @@ document.querySelector('#sampleBtn').addEventListener('click', async () => {
     id:crypto.randomUUID()
   };
 
-  sample.overall = scoreOf(sample);
+
 
   await saveReview(sample);
   await render();
