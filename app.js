@@ -2,7 +2,7 @@
 const SUPABASE_URL = "https://byvqjbxkmcwmurifptti.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_0rdRvX_M8wTy7_aQKJfYFA_I22kPDkj";
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // 🎯 DOM
 const form = document.querySelector('#reviewForm');
@@ -35,7 +35,7 @@ function updatePreview() {
 
 // 📡 GET from Supabase
 async function getReviews() {
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from('entries')
     .select('*');
 
@@ -49,7 +49,7 @@ async function getReviews() {
 
 // 📡 INSERT into Supabase
 async function saveReview(review) {
-  const { error } = await supabase
+  const { error } = await db
     .from('entries')
     .insert([review]);
 
