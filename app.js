@@ -36,7 +36,7 @@ function updatePreview() {
 // 📡 GET from Supabase
 async function getReviews() {
   const { data, error } = await db
-    .from('entries')
+    .from('reviews')
     .select('*');
 
   if (error) {
@@ -50,7 +50,7 @@ async function getReviews() {
 // 📡 INSERT into Supabase
 async function saveReview(review) {
   const { error } = await db
-    .from('entries')
+    .from('reviews')
     .insert([review]);
 
   if (error) {
